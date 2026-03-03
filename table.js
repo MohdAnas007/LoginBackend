@@ -27,4 +27,10 @@ const userData=sequelize.define('loginsignup',{
 }
 )
 
+try {
+    await sequelize.sync({ alter: true });
+    console.log("✅ Table 'user_data' synchronized successfully");
+} catch (err) {
+    console.error("❌ Error syncing table:", err.message);
+}
 export default userData;
