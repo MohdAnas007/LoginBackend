@@ -11,8 +11,14 @@ app.use(express.json());
 app.use(cors({
     origin:'http://localhost:3000',
     credentials:true,
-    
+
 }))
+
+app.get('/',(req,res)=>{
+    return res.json({
+        message:"backend is running ",
+    })
+})
 app.post('/api/signup',async(req,res)=>{
     const {fullname,phoneNumber,userName,password}=req.body;
     const hash=await hashPassword(password);
